@@ -6,6 +6,7 @@ class auth extends controller
     }
     function index()
     {
+        // ada
     }
     function login()
     {
