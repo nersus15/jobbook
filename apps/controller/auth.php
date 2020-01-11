@@ -6,7 +6,7 @@ class auth extends controller
     }
     function index()
     {
-        // ada
+        var_dump($this->model('User_model')->getAllUser());
     }
     function login()
     {
