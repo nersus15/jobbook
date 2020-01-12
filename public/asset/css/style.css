@@ -13,7 +13,7 @@
 
 /* jumbotron */
 .jumbotron {
-    background-image: url(../img/jumbotron-bg.jpg);
+    background-image: url(http://localhost/jobbook/public/asset/img/landingPage/jumbotron-bg.jpg);
     background-size: cover;
     height: 540px;
     position: relative;

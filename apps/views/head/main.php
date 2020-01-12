@@ -8,6 +8,8 @@
 
     <!-- CSS - Bootstrap -->
     <link rel="stylesheet" href="<?= BASEPATH ?>asset/vendor/bootstrap/css/bootstrap.min.css">
+
+    <!-- Extra CSS for page only -->
     <?php if (isset($data['extra']['css'])) :
         foreach ($data['extra']['css'] as $css) :
             echo $css;
