@@ -14,12 +14,8 @@
                         <a class="nav-item nav-link" href="#">Browse Job</a>
                     </li>
                     <li id="drop">
-                        <a class="nav-item nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Log In</a>
+                        <a class="nav-item nav-link" href=" #" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Log In</a>
 
-                    </li>
-
-                    <li>
-                        <a class="nav-item nav-link" href="register.html">Sign Up</a>
                     </li>
                     <li>
                         <a class="nav-item btn btn-warning btn-tombol" href="#">Post a Project</a>
