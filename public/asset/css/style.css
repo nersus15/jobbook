@@ -1,0 +1,321 @@
+/* navbar */
+
+.navbar {
+    position: relative;
+    z-index: 1;
+}
+
+.navbar-brand {
+    font-family: Viga;
+    font-size: 32px;
+    text-transform: uppercase;
+}
+
+/* jumbotron */
+.jumbotron {
+    background-image: url(../img/jumbotron-bg.jpg);
+    background-size: cover;
+    height: 540px;
+    position: relative;
+}
+
+.jumbotron .container {
+    margin-top: 75px;
+    position: relative;
+    z-index: 1;
+}
+
+.jumbotron .display-4,
+.lead {
+    color: rgb(0, 0, 0) !important;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.7);
+    font-weight: 200;
+}
+
+.jumbotron .display-4 {
+    font-family: Viga;
+    font-size: 35px;
+    text-transform: capitalize;
+}
+
+.jumbotron .form-inline .btn,
+.form-control {
+    border-radius: 0px;
+}
+
+.jumbotron::after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+    bottom: 0;
+    position: absolute;
+}
+
+.carousel-inner {
+    position: relative;
+    width: 70%;
+    overflow: hidden
+}
+
+
+/* paralax efek with jumbotron */
+.paralax {
+    background-image: url(../img/paralak-efek.jpg);
+    background-position: 0 10px;
+    background-attachment: fixed;
+    background-size: cover;
+    margin-top: 100px;
+}
+
+.paralax .container {
+    margin-top: -5px;
+}
+
+/* .paralax .display-4 {
+    color: #fbfbfb !important;
+    margin-top: 80px;
+    font-weight: 200;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+    font-size: 40px;
+    margin-bottom: 30px;
+    border-bottom-right-radius: 150px;
+    border-bottom-left-radius: 150px;
+}
+
+.paralax .display-4 span {
+    font-weight: 500;
+} */
+
+
+
+/* form panel */
+.form-panel {
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    margin-top: -55px;
+    background-color: #fff;
+    padding: 35px;
+}
+
+.form-group .btn-cari {
+    width: 100%;
+    margin-top: 20%;
+    /* border-radius: 20px; */
+}
+
+.container-fluid {
+    width: 85%;
+}
+
+/* workingspace */
+.workingspace {
+    margin-top: 130px;
+    text-align: center;
+}
+
+.workingspace h3 {
+    font-size: 52px;
+    font-weight: 200;
+    text-transform: uppercase;
+    margin-top: 30px;
+}
+
+.workingspace h3 span {
+    font-weight: 500;
+}
+
+/* profil */
+.blockquote {
+    margin-top: 100px;
+    margin-bottom: 70px;
+    padding: 20px;
+}
+
+.workingspace p {
+    font-size: 18px;
+    color: #acacac;
+    font-weight: 200;
+    margin: 35px 0;
+}
+
+/* Footer */
+.footer {
+    background-color: black;
+    margin-top: 100px;
+    width: 101%;
+    padding: 15px 0;
+}
+
+.footer p {
+    color: #aaccaa;
+    font-size: 12px;
+    font-style: italic;
+}
+
+
+/* Utility */
+.btn-tombol {
+    text-transform: uppercase;
+    border-radius: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 0px;
+}
+
+.btn-warning {
+    background-color: rgb(255, 157, 0);
+}
+
+
+.btn-cari {
+    color: white;
+    font-weight: 500;
+    background-color: rgb(255, 157, 0);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+    display: block;
+}
+
+.icon {
+    width: 24px;
+}
+
+.input-group-text {
+    background-color: rgb(255, 157, 0);
+}
+
+.img-col1 {
+    width: 320px;
+    height: 250px;
+    position: relative;
+    margin-bottom: 25px;
+}
+
+
+
+
+/* Desktop Version */
+@media (min-width: 992px) {
+
+    /* navbar */
+
+    .navbar {
+        background-color: transparent;
+        transition: 1.2s;
+        background-color: rgba(22, 22, 22, 0.1);
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030
+    }
+
+    /* transformasi efek scroll */
+
+    .navbar.shrink {
+        content: '';
+        display: block;
+        width: 100%;
+        background-color: rgba(0, 0, 0);
+        width: 100%;
+    }
+
+    .navbar-brand,
+    .nav-link.shrink {
+        /* color: rgb(5, 5, 5) !important; */
+        color: white !important;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+    }
+
+    /* akhir transformasi efek scroll */
+
+
+    .nav-link {
+        margin-right: 30px;
+        text-transform: uppercase;
+    }
+
+    .navbar-brand,
+    .nav-link,
+    .btn-tombol {
+        color: white !important;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    }
+
+    /* nav hover */
+    .nav-link:hover::after {
+        content: '';
+        display: block;
+        border-bottom: 3px solid rgb(255, 157, 0);
+        width: 50%;
+        margin: auto;
+        padding-bottom: 5px;
+        margin-bottom: -8px;
+    }
+
+    /* jumbotron */
+
+    .jumbotron .display-4 {
+        font-family: Viga;
+        font-size: 51px;
+    }
+
+    .jumbotron {
+        height: 580px;
+    }
+
+    /* form panel  */
+    .form-panel {
+        margin-top: -100px;
+    }
+
+    .workingspace {
+        text-align: left;
+    }
+
+
+    /* Utility */
+    .btn-warning:hover {
+        background-color: rgb(255, 157, 0);
+        width: 150px;
+    }
+
+    .footer p {
+        color: #aaccaa;
+        font-size: 16px;
+    }
+
+    .img-lg1 {
+        /* background-image: url("../img/Why Chose Us.jpg"); */
+        width: 100%;
+        height: 100px;
+        position: relative;
+        background-size: cover;
+        /* opacity: 5; */
+        /* margin-bottom: 25px; */
+    }
+
+
+    .img-lg1::after {
+        content: '';
+        display: block;
+        height: 100%;
+        width: 100%;
+        background-image: linear-gradient(rgba(236, 116, 4, 0.7), rgba(250, 110, 16, 0.7));
+        bottom: 0;
+        position: absolute;
+    }
+
+    .img-lg1:hover::after {
+        content: "";
+        background-image: linear-gradient(rgba(236, 116, 4, 0.1), rgba(250, 110, 16, 0.1));
+        display: block;
+        height: 100%;
+        width: 100%;
+        bottom: 0;
+        position: absolute;
+        
+        
+    }
+}
