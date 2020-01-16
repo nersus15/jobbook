@@ -15,7 +15,21 @@
                     </li>
                     <li id="drop">
                         <a class="nav-item nav-link" href=" #" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Log In</a>
-
+                        <div class="dropdown-menu row" id="dropdownMenu" aria-labelledby="navbarDropdownMenuLink">
+                            <form action="<?= BASEURL ?>auth_ws/login" method="POST" id="login" class="col-md">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">User</label>
+                                    <input required type="text" name="user" placeholder="Username atau email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Password</label>
+                                    <input required type="password" name="password" class="form-control" id="exampleInputPassword1">
+                                </div>
+                                <button type="submit" class="btn btn-sm btn-primary ">Submit</button>
+                                <small> atau register <a href="<?= BASEURL ?>user/register">disini</a></small>
+                            </form>
+                        </div>
                     </li>
                     <li>
                         <a class="nav-item btn btn-warning btn-tombol" href="#">Post a Project</a>
@@ -39,6 +53,7 @@
                         <br>
                         <h1>Join US</h1>
                     </div>
+                    <div><?= flasher::flash(); ?></div>
                     <div class="carousel-item" data-interval="2000">
                         <p class="lead">travel to the any corner of the world. eithout going around in circles</p>
                         <h1 class="display-4">You <span>work</span> like at <br><span>home</span></h1>
