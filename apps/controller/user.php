@@ -3,10 +3,15 @@ class user extends controller
 {
     function register()
     {
+        // persiapan
+        $data['extra']['css'] = [
+            '<link rel="stylesheet" href=" '.BASEPATH.'asset/css/style.css">'
+            
+        ];
         // Load views
-        $this->view('head/main');
-        $this->view('user/register');
-        $this->view('fott/main');
+        $this->view('head/main',$data);
+        $this->view('user/register',$data);
+        $this->view('foot/main');
     }
     function _register()
     {
