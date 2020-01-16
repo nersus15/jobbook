@@ -4,6 +4,9 @@ class user extends controller
     function register()
     {
         // Load views
+        $this->view('head/main');
+        $this->view('user/register');
+        $this->view('fott/main');
     }
     function _register()
     {
