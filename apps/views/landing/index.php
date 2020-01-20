@@ -1,7 +1,7 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-            <a class="navbar-brand" href="#">Freelancer</a>
+            <a class="navbar-brand" href="#">Jobbook</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" style="background-color: white;">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -68,7 +68,7 @@
             <br>
 
             <a class="nav-item btn btn-warning btn-tombol" href="#">I want to Hire</a>
-            <a class="nav-item btn btn-warning btn-tombol" href="#">I want to Work</a>
+            <a class="nav-item btn btn-warning btn-tombol" href="views/pekerjaan/tpekerjaan.php">I want to Work</a>
         </div>
     </div>
     <!-- last jumbotron -->
