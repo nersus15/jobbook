@@ -1,6 +1,12 @@
 <?php
 class landing extends controller
 {
+    function __construct()
+    {
+        if (isset($_SESSION['user_data'])) {
+            header("Location: " . BASEURL . "my");
+        }
+    }
     function index()
     {
         $data['page_title'] = "Job book";
