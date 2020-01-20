@@ -43,70 +43,33 @@ class User_model
             'aksi' => 'Logout',
             'user' => $_SESSION['user_data']['nama']
         ];
-        $this->addlog();
         unset($_SESSION['login']);
         unset($_SESSION['user_data']);
         header('location:' . BASEURL . '/admin');
         exit;
     }
-    public function getUserMenu()
+    public function getUser($params)
     {
-        $role_id =    $_SESSION['user_data']['role_id'];
-        $queryMenu = "SELECT user_menu.id , menu from user_menu JOIN user_access_menu
-             on user_menu.id=user_access_menu.menu_id WHERE user_access_menu.role_id=$role_id
-             ORDER by user_access_menu.menu_id
-            ";
-        $this->DB->query($queryMenu);
-        $this->DB->execute();
-        return $this->DB->resultSet();
-    }
-    public function addlog()
-    {
-        $date = date('d-m-Y', time());
-        $action = $_SESSION['log']['aksi'];
-        $user = $_SESSION['log']['user'];
-        unset($_SESSION['log']);
-        $query = "INSERT INTO log_activity(`tgl`,`aksi`,`user`, `time`) values (:tgl, :aksi, :user, :waktu)";
+        $query = "SELECT * FROM user, profile WHERE ";
+        $i = 0;
+        foreach ($params as $key => $value) {
+            if ($i != count($params) - 1) {
+                $query .= $key . "=:" . $key . " OR ";
+            } else {
+                $query .= $key . "=:" . $key;
+            }
+            $i++;
+        }
         $this->DB->query($query);
-        $this->DB->bind('tgl', $date);
-        $this->DB->bind('waktu', time());
-        $this->DB->bind('aksi', $action);
-        $this->DB->bind('user', $user);
-        $this->DB->execute();
-    }
-    public function getAllLog()
-    {
-        $query = "SELECT * FROM log_activity";
-        $this->DB->query($query);
-        $log = $this->DB->resultSet();
-        return $log;
-    }
-    public function getRole()
-    {
-        $query = "SELECT * FROM user_role";
-        $this->DB->query($query);
-        $role = $this->DB->resultSet();
-        return $role;
-    }
-    public function getLogById($userId)
-    {
-        $query = "SELECT * from log_activity where log_activity.user=(SELECT user.nama from user where user.id=:userId)";
-        $this->DB->query($query);
-        $this->DB->bind('userId', $userId);
-        $log = $this->DB->resultSet();
-        return $log;
-    }
-    public function Akun($email)
-    {
-        $query = "SELECT * FROM user WHERE email =:email";
-        $this->DB->query($query);
-        $this->DB->bind('email', $email);
-        $account = $this->DB->single();
+        foreach ($params as $key => $value) {
+            $this->DB->bind($key, $value);
+        }
+        $account = $this->DB->resultSet();
         return $account;
     }
     public function editprofile($data)
     {
-        $user = $this->Akun($data['email']);
+        $user = $this->getUser($data['email']);
         if ($_FILES['image']['error'] == 4) {
             $image = $user['image'];
             $nama_image = $image;
@@ -126,7 +89,7 @@ class User_model
             $this->DB->bind('foto', $nama_image);
             $this->DB->execute();
             flasher::setFlash('Profle berhasil di Update', 'success');
-            $akun = $this->Akun($data['email']);
+            $akun = $this->getUser($data['email']);
             $_SESSION['user_data'] = [
                 'id' => $akun['id'],
                 'email' => $akun['email'],
@@ -139,7 +102,7 @@ class User_model
                 'aksi' => 'Edit Profile',
                 'user' => $_SESSION['user_data']['nama']
             ];
-            $this->addlog();
+
             header('location: ' . BASEURL . '/user/profile');
         }
     }
@@ -172,53 +135,52 @@ class User_model
     public function register($data)
     {
         // persiapan
-        $password = password_hash($data['Password'], PASSWORD_DEFAULT);
-        $email = $data['Email'];
-        $name = $data['FullName'];
-        $tgl_buat = time();
-        $role_id = $data['role'];
+        $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+        $kolom_profile = array("nik", "nama_lengkap", "alamat", "no_hp", "tgl_lahir", "jenis_kelamin", "photo");
+        $kolo_user = array("username", "email", "password", "role", "nik");
         // query mysql
-        $query = "INSERT into user(`id`,`nama`,`email`,`password`,`tgl_buat`,`role_id`, `image`)VALUES(:id, :nama, :email,:pass, :tgl,:role_id, 'default.jpg')";
-        $this->DB->query($query);
-        $this->DB->bind('nama', $name);
-        $this->DB->bind('email', $email);
-        $this->DB->bind('pass', $password);
-        $this->DB->bind('tgl', $tgl_buat);
-        $this->DB->bind('id', $id);
-        $this->DB->bind('role_id', $role_id);
-        $this->DB->execute();
-    }
-
-    public function filterLog($param1, $param2)
-    {
-
-        if ($param1 == 'semua' && $param2 == 'semua') {
-            return $this->getAllLog();
-        } else if ($param1 != 'semua' && $param2 != 'semua') {
-            $param2 = strtotime($param2);
-            $param2 = date('d-m-Y', $param2);
-            $query = "SELECT * from log_activity where log_activity.tgl=:tgl and log_activity.user=(SELECT user.nama from user where user.id=:userId)";
-            $user = $this->DB->query($query);
-            $this->DB->bind('userId', $param1);
-            $this->DB->bind('tgl', $param2);
-            $log = $this->DB->resultSet();
-            return $log;
-        } else if ($param1 == 'semua' && $param2 != 'semua') {
-            $param2 = strtotime($param2);
-            $param2 = date('d-m-Y', $param2);
-            $query = "SELECT * from log_activity where tgl=:tgl";
-            $this->DB->query($query);
-            $this->DB->bind('tgl', $param2);
-            $log = $this->DB->resultSet();
-            return $log;
-        } else if ($param1 != 'semua' && $param2 == 'semua') {
-            $query = "SELECT * from log_activity where log_activity.user=(SELECT user.nama from user where user.id=:userId)";
-            $this->DB->query($query);
-            $this->DB->bind('userId', $param1);
-            $log = $this->DB->resultSet();
-            return $log;
-        } else {
-            return null;
+        $query = "INSERT INTO profile(`nik`, `nama_lengkap`, `alamat`, `no_hp`) VALUES(";
+        $query2 = "INSERT INTO user VALUES (";
+        $i = 0;
+        foreach ($data as $key => $value) {
+            if ($i == 0) {
+                if (in_array($key, $kolom_profile)) {
+                    $query .= ":" . $key;
+                } else if (in_array($key, $kolo_user)) {
+                    $query2 .= ":" . $key;
+                    $ok = true;
+                }
+            } else {
+                if (in_array($key, $kolom_profile)) {
+                    $query .= " ,:" . $key;
+                } else if (in_array($key, $kolo_user)) {
+                    if ($key != "cpassword") {
+                        if (isset($ok) and $ok == true) {
+                            $query2 .= " ,:" . $key;
+                        } else {
+                            $query2 .= " :" . $key;
+                            $ok = true;
+                        }
+                    }
+                }
+            }
+            $i++;
         }
+        $query .= " )";
+        $query2 .= ",:nik )";
+        $this->DB->query($query);
+        foreach ($data as $key => $value) {
+            if (in_array($key, $kolom_profile)) {
+                $this->DB->bind($key, $value);
+            }
+        }
+        $this->DB->execute();
+        $this->DB->query($query2);
+        foreach ($data as $key => $value) {
+            if (in_array($key, $kolo_user)) {
+                $this->DB->bind($key, $value);
+            }
+        }
+        $this->DB->execute();
     }
 }
