@@ -6,6 +6,34 @@ class Pekerjaan_model
     {
         $this->db = new database;
     }
+    //get pekerjaan by kode
+    function getPekerjaanByKode($kode)
+    {
+        $this->db->query("SELECT * FROM pekerjaan WHERE kode =:kode");
+        $this->db->bind('kode', $kode);
+        return $this->db->single();
+    }
+    // update pekerjaan 
+    function updatePekerjaan($kode, $data)
+    {
+        $query = "UPDATE pekerjaan set";
+        $i = 0;
+        foreach ($data as $key => $value) {
+            if ($i == 0) {
+                $query .= "$key=:$key";
+            } else {
+                $query .= ", $key=:$key";
+            }
+            $i++;
+        }
+        $query .= " WHERE kode=:kode";
+        $this->db->query($query);
+        $this->db->bind('kode', $kode);
+        foreach ($data as $key => $value) {
+            $this->db->bind($key, $value);
+        }
+        $this->db->execute();
+    }
     // pekerjaan yang open
     function pekerjaan_get()
     {
