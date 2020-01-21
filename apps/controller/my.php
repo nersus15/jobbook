@@ -14,4 +14,7 @@ class my extends controller
     function dashboard()
     {
     }
+    function post_job()
+    {
+    }
 }

@@ -6,6 +6,28 @@ class Pekerjaan_model
     {
         $this->db = new database;
     }
+    // Post Pekerjaan
+    function post_pekerjaan($data)
+    {
+        //persiapan
+        $data['kode'] = uniqid();
+        $query = "INSERT INTO pekerjaan VALUES ( ";
+        $i = 0;
+        foreach ($data as $key => $value) {
+            if ($i == 0) {
+                $query .= ":$key";
+            } else {
+                $query .= ", :$key";
+            }
+            $i++;
+        }
+        $query .= ")";
+        $this->db->query($query);
+        foreach ($data as $key => $value) {
+            $this->db->bind($key, $value);
+        }
+        $this->db->execute();
+    }
     //get pekerjaan by kode
     function getPekerjaanByKode($kode)
     {
