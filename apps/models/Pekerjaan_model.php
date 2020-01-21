@@ -56,4 +56,41 @@ class Pekerjaan_model
         $this->db->query($query);
         return $this->db->resultSet();
     }
+    function lamarPekerjaan($kode, $username)
+    {
+        //persiapan
+        $kodeLamaran = uniqid();
+
+        //post data
+        $this->db->query("INSERT into lamaran VALUES(:kodeLamaran, :kodePekerjaan, :username)");
+        $this->db->bind("kodeLamaran", $kodeLamaran);
+        $this->db->bind("kodePekerjaan", $kode);
+        $this->db->bind("username", $username);
+        $this->db->execute();
+    }
+    function getPelamarByPekerjaan($kodePekerjaan)
+    {
+        $this->db->query("SELECT * FROM lamaran JOIN user on (lamaran.pelamar=user.username) WHERE lamaran.pekerjaan=:pekerjaan");
+        $this->db->bind("pekerjaan", $kodePekerjaan);
+        $users = $this->db->resultSet();
+        $query = "SELECT * FROM profile where";
+        $i = 0;
+        foreach ($users as $key => $value) {
+            $key .= $i;
+            if ($i == 0) {
+                $query .= "nik=:$key";
+            } else {
+                $query .= " OR nik=:$key ";
+            }
+            $i++;
+        }
+        $this->db->query($query);
+        $j = 0;
+        foreach ($users as $key => $value) {
+            $key .= $j;
+            $this->db->bind($key, $value);
+        }
+        $profile = $this->db->resultSet();
+        return array($users, $profile);
+    }
 }
