@@ -57,10 +57,15 @@ class Pekerjaan_model
         $this->db->execute();
     }
     // pekerjaan yang open
-    function pekerjaan_get()
+    function pekerjaan_get($username = null)
     {
         // persiapan
-        $this->db->query("SELECT * FROM pekerjaan WHERE pekerjaan.status='open'");
+        if (is_null($username)) {
+            $this->db->query("SELECT * FROM pekerjaan WHERE pekerjaan.status='open'");
+        } else {
+            $this->db->query("SELECT * FROM pekerjaan WHERE pekerjaan.status='open' and pekerjaan.pembuat != :username");
+            $this->db->bind('username', $username);
+        }
         return $this->db->resultSet();
     }
     // get pekerjaan by user

@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Profil</title>
-    <link rel="stylesheet" href="profil.css">
-</head>
-
-<body>
-
     <header>
         <div class="container">
             <nav>
@@ -49,7 +38,3 @@
             </div>
         </div>
     </header>
-
-</body>
-
-</html>

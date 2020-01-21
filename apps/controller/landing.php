@@ -18,6 +18,7 @@ class landing extends controller
         ];
         // $data['modal'] = array($this->helper('file_reader')->read(BASEURL . 'apps/views/dropdowns/login.php'));
         $this->view('head/main', $data);
+        $this->view('navigasi/main_navbar');
         $this->view('landing/index', $data);
         $this->view('foot/main', $data);
     }

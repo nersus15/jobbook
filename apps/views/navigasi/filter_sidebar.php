@@ -1,5 +1,6 @@
 <style>
     .sidebar-wrapper {
+        top: 25%;
         margin-left: 3%;
         width: 20%;
         position: fixed;
