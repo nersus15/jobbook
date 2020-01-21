@@ -95,6 +95,7 @@ class Pekerjaan_model
         $this->db->bind("kodePekerjaan", $kode);
         $this->db->bind("username", $username);
         $this->db->execute();
+        $this->db->query("UPDATE pekerjaan set status='On Progress'");
     }
     function getPelamarByPekerjaan($kodePekerjaan)
     {
