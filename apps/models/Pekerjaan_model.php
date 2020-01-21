@@ -63,7 +63,13 @@ class Pekerjaan_model
         $this->db->query("SELECT * FROM pekerjaan WHERE pekerjaan.status='open'");
         return $this->db->resultSet();
     }
-
+    // get pekerjaan by user
+    function getPekerjaanByUser($pembuat)
+    {
+        $this->db->query("SELECT * FROM pekerjaan WHERE pekerjaan.pembuat=:pembuat");
+        $this->db->bind("bind", $pembuat);
+        return $this->db->resultSet();
+    }
     // Filter pekerjaan sync
     function filter_pekerjaan($params)
     {
