@@ -26,14 +26,14 @@ class auth_ws extends controller
         $accounts = $this->model('User_model')->getUser($params);
         // Logic untuk email boleh kosong
         $data['email'] = ($data['email'] == null) ? '-' : $data['email'] = $data['email'];
-
+        $data['no_hp'] = ($data['no_hp'] == null) ? '-' : $data['no_hp'] = $data['no_hp'];
 
         // Logic untuk cek inputan tidak boleh sama
         foreach ($accounts as $account) {
             if ($data['email'] != "-" and $data['email'] == $account['email']) {
                 flasher::setFlash("Gagal, Email sudah digunakan", "danger");
                 header("Location: " . BASEURL . "/user/register");
-            } else if ($data['no_hp'] == $account['no_hp']) {
+            } else if ($data['no_hp'] != "-" and $data['no_hp'] == $account['no_hp']) {
                 flasher::setFlash("Gagal, No Hp sudah digunakan", "danger");
                 header("Location: " . BASEURL . "/user/register");
             } elseif ($data['username'] == $account['username']) {

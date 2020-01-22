@@ -7,6 +7,18 @@ class User_model
     {
         $this->DB = new database;
     }
+    public function profile($username)
+    {
+        $this->DB->query("SELECT * FROM user WHERE username=:username");
+        $this->DB->bind('username', $username);;
+        $akun = $this->DB->single();
+        $nik = $akun['nik'];
+        $this->DB->query("SELECT * FROM profile WHERE nik=:nik");
+        $this->DB->bind("nik", $nik);
+        $profile = $this->DB->single();
+
+        return array("akun" => $akun, "profile" => $profile);
+    }
     public function getAllUser()
     {
         $query = "SELECT * FROM user ";
@@ -25,7 +37,7 @@ class User_model
         if ($akun) {
             if (password_verify($password, $akun['password'])) {
                 $_SESSION['user_data'] = $akun;
-                $_SESSION['user_data']['passowrd'] = $data['password'];
+                $_SESSION['user_data']['password'] = $password;
                 return true;
             } else {
                 flasher::setFlash('Password untuk ' . $data['user'] . ' Salah', 'danger');

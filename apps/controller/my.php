@@ -37,7 +37,22 @@ class my extends controller
         ];
         $data['extra']['js'] = [
             '<script src="' . BASEPATH . 'asset/js/script.js"></script>',
+            '<script>
+            function show() {
+                if ($("#password").attr("type") == "password") {
+                    $("#password").attr("type", "text")
+                    $("#cpassword").attr("type", "text")
+            
+                } else {
+                    $("#password").attr("type", "password")
+                    $("#cpassword").attr("type", "password")
+                }
+            }</script>'
         ];
+        $data['user'] = $this->model('User_model')->profile($_SESSION['user_data']['username']);
+        extract($data['user']);
+        $data['akun'] = $akun;
+        $data['profile'] = $profile;
         $this->view('head/main', $data);
         $this->view('navigasi/main_navbar', $data);
         $this->view('user/profil', $data);

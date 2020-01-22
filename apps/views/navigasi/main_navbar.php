@@ -43,7 +43,7 @@
                                   </div>
                                   <div class="dropdown-menu row" id="dropdownMenu" aria-labelledby="navbarDropdownMenuLink">
                                       <ul class="nav">
-                                          <li><a class="nav-link nav-item" href="">Profile</a></li>
+                                          <li><a class="nav-link nav-item" href="<?= BASEURL ?>my/profile">Profile</a></li>
                                           <li><a class="nav-link nav-item" href="<?= BASEURL ?>auth_ws/logout">Logout</a></li>
                                       </ul>
                                   </div>
