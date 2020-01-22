@@ -9,28 +9,44 @@
                 <div>
                     <?= flasher::flash() ?>
                 </div>
-                <form method="POST" action="">
+                <form enctype="multipart/form-data" method="POST" action="<?= BASEURL ?>pekerjaan_ws/pekerjaan_post">
                     <div class="form-group">
                         <label for="">Nama Pekerjaan</label>
-                        <input required type="text" class="form-control" name="nm_pekerjaan">
+                        <input required type="text" class="form-control" name="nama_pekerjaan">
                     </div>
 
                     <div class="form-group">
                         <label for="">Deskripsi</label>
-                        <textarea required class="form-control" name="waktu"></textarea>
+                        <textarea required class="form-control" name="deskripsi"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="">Tempat Pekerjaan</label>
-                        <input required type="text" class="form-control" name="desc">
+                        <input required type="text" class="form-control" name="lokasi">
                     </div>
 
                     <div class="form-group">
-                        <label for="">Lama Pekerjaan</label>
-                        <input required type="text" class="form-control" name="tpt_krj">
+                        <label for="">Lama Pengerjaan</label>
+                        <input required type="text" class="form-control" name="lama_pengerjaan">
                     </div>
                     <div class="form-group">
                         <label for="">Biaya</label>
-                        <input type="text" class="form-control" name="biaya" placeholder="Rp-">
+                        <input required type="text" class="form-control" name="biaya">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Link Google Map</label>
+                        <input type="text" class="form-control" name="link_gmap" placeholder="Rp-">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Upload Gambar</label>
+                        <input type="file" name="image" id="">
                     </div>
                     <br>
                     <div class="form-group">
+                        <button class="btn btn-danger w-50 float-left" type="submit">Batal</button>
+                        <button class="btn btn-primary w-50" type="submit">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>

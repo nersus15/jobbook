@@ -11,22 +11,50 @@ class Pekerjaan_model
     {
         //persiapan
         $data['kode'] = uniqid();
-        $query = "INSERT INTO pekerjaan VALUES ( ";
+        $data['status'] = "open";
+        $data['pembuat'] = $_SESSION['user_data']['username'];
+        $query = "INSERT INTO pekerjaan ( ";
+        $i = 0;
+        $kolom = ["kode", "nama_pekerjaan", "deskripsi", "lokasi", "link_gmap", "lama_pengerjaan", "biaya", "status", "pembuat", "thumbnail"];
+        foreach ($data as $key => $value) {
+            if (in_array($key, $kolom)) {
+                if (isset($ok) and $ok == true) {
+                    $query .= ", `$key`";
+                } else {
+                    $query .= "`$key`";
+                    $ok = true;
+                }
+            }
+            $i++;
+        }
+        $query .= ") VALUES(";
         $i = 0;
         foreach ($data as $key => $value) {
-            if ($i == 0) {
-                $query .= ":$key";
-            } else {
-                $query .= ", :$key";
+            if (in_array($key, $kolom)) {
+                if ($i == 0) {
+                    $query .= ":$key";
+                    $ok = true;
+                } else {
+                    if (isset($ok) and $ok == true) {
+                        $query .= ", :$key";
+                    } else {
+                        $query .= ":$key";
+                        $ok = true;
+                    }
+                }
             }
             $i++;
         }
         $query .= ")";
         $this->db->query($query);
         foreach ($data as $key => $value) {
-            $this->db->bind($key, $value);
+            if (in_array($key, $kolom)) {
+                $this->db->bind($key, $value);
+            }
         }
         $this->db->execute();
+
+        flasher::setFlash("Pekerjaan berhasil di post", "success");
     }
     //get pekerjaan by kode
     function getPekerjaanByKode($kode)
@@ -72,7 +100,7 @@ class Pekerjaan_model
     function getPekerjaanByUser($pembuat)
     {
         $this->db->query("SELECT * FROM pekerjaan WHERE pekerjaan.pembuat=:pembuat");
-        $this->db->bind("bind", $pembuat);
+        $this->db->bind("pembuat", $pembuat);
         return $this->db->resultSet();
     }
     // Filter pekerjaan sync

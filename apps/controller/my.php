@@ -25,8 +25,22 @@ class my extends controller
     function dashboard()
     {
     }
-    function post_job()
+    function jobs()
     {
+        //persiapan
+        $data['extra']['css'] = [
+            '<link rel="stylesheet" href="' . BASEPATH . '/asset/css/style.css">'
+        ];
+        $data['extra']['js'] = [
+            '<script src="' . BASEPATH . 'asset/js/script.js"></script>',
+        ];
+        $data['page_title'] = "Jobbook";
+        $data['pekerjaan'] = $this->model('Pekerjaan_model')->getPekerjaanByUser($_SESSION['user_data']['username']);
+        $this->view('head/main', $data);
+        $this->view('navigasi/main_navbar');
+        $this->view('navigasi/filter_sidebar');
+        $this->view('pekerjaan/tpekerjaan', $data);
+        $this->view('foot/main', $data);
     }
     function profile()
     {
