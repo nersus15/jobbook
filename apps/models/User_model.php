@@ -83,29 +83,35 @@ class User_model
     {
         // persiapan
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-        $kolom_profile = array("nik", "nama_lengkap", "alamat", "no_hp", "tgl_lahir", "jenis_kelamin", "photo");
-        $kolo_user = array("username", "email", "password", "role", "nik");
+        $kolom_profile = array("nama_lengkap", "alamat", "no_hp", "tgl_lahir", "jenis_kelamin", "photo");
+        $kolo_user = array("email", "password", "role");
         // query mysql
         $query = "UPDATE profile set";
-        $query2 = "INSERT INTO user VALUES (";
+        $query2 = "UPDATE  user set";
         $i = 0;
         foreach ($data as $key => $value) {
             if ($i == 0) {
                 if (in_array($key, $kolom_profile)) {
-                    $query .= "$key:" . $key;
+                    $query .= "$key=:" . $key;
+                    $ok2 = true;
                 } else if (in_array($key, $kolo_user)) {
-                    $query2 .= "$key:" . $key;
+                    $query2 .= "$key=:" . $key;
                     $ok = true;
                 }
             } else {
                 if (in_array($key, $kolom_profile)) {
-                    $query .= " ,$key:" . $key;
+                    if (isset($ok2) and $ok2 == true) {
+                        $query .= " ,$key=:" . $key;
+                    } else {
+                        $query .= " $key=:" . $key;
+                        $ok2 = true;
+                    }
                 } else if (in_array($key, $kolo_user)) {
                     if ($key != "cpassword" or $key != "nik") {
                         if (isset($ok) and $ok == true) {
-                            $query2 .= " ,$key:" . $key;
+                            $query2 .= " ,$key=:" . $key;
                         } else {
-                            $query2 .= " :$key" . $key;
+                            $query2 .= " $key=:" . $key;
                             $ok = true;
                         }
                     }
@@ -113,7 +119,10 @@ class User_model
             }
             $i++;
         }
+        $query .= " WHERE nik=:nik ";
+        $query2 .= " WHERE username=:username ";
         $this->DB->query($query);
+        $this->DB->bind('nik', $data['nik']);
         foreach ($data as $key => $value) {
             if (in_array($key, $kolom_profile)) {
                 $this->DB->bind($key, $value);
@@ -121,6 +130,7 @@ class User_model
         }
         $this->DB->execute();
         $this->DB->query($query2);
+        $this->DB->bind('username', $data['username']);
         foreach ($data as $key => $value) {
             if (in_array($key, $kolo_user)) {
                 $this->DB->bind($key, $value);

@@ -3,8 +3,11 @@
     <div class="card profile-card">
         <img style="width: 150px" src="<?= BASEPATH ?>asset/img/profile/<?= $data['profile']['photo'] ?>" class="card-img-top" alt="...">
         <div class="card-body">
+            <div><?php flasher::flash() ?></div>
             <h5 class="card-title">Detil Akun</h5>
-            <form action="" class="row" enctype="multipart/form-data">
+            <form method="POST" action="<?= BASEURL ?>auth_ws/update" class="row" enctype="multipart/form-data">
+                <input type="hidden" name="oldemail" id="olde" value="<?= $data['akun']['email'] ?>">
+                <input type="hidden" name="oldno_hp" id="oldn" value="<?= $data['profile']['no_hp'] ?>">
                 <div class="col-md-12">
                     <div class="form-group col-md-6">
                         <label for="username">Username</label>
@@ -54,7 +57,7 @@
                                 <br>
                                 <input type="radio" id="lk" name="jenis_kelamin" value="Perempuan" checked> Perempuan
                             <?php else : ?>
-                                <input type="radio" id="pr" name="jenis_kelamin" value="Laki-lacheckedki" checked> Laki-laki
+                                <input type="radio" id="pr" name="jenis_kelamin" value="Laki-laki" checked> Laki-laki
                                 <br>
                                 <input type="radio" id="lk" name="jenis_kelamin" value="Perempuan"> Perempuan
                             <?php endif ?>
@@ -65,6 +68,7 @@
                         <input class="form-control" type="file" name="image" id="photo">
                     </div>
                 </div>
+                <button type="submit">Simpan</button>
             </form>
         </div>
     </div>
