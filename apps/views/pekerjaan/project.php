@@ -34,11 +34,3 @@
                     </div>
                     <br>
                     <div class="form-group">
-                        <button class="btn btn-danger w-50 float-left" type="submit">Batal</button>
-                        <button class="btn btn-primary w-50" type="submit">Simpan</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-    </div>
