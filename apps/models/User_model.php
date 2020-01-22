@@ -119,8 +119,8 @@ class User_model
             }
             $i++;
         }
-        $query .= " WHERE nik=:nik ";
-        $query2 .= " WHERE username=:username ";
+        $query .= " WHERE nik=:nik";
+        $query2 .= " WHERE username=:username";
         $this->DB->query($query);
         $this->DB->bind('nik', $data['nik']);
         foreach ($data as $key => $value) {
