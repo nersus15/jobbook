@@ -1,7 +1,7 @@
    <header>
        <div class="container">
            <nav>
-               <img src="Gambar/logo.png" alt="">
+               <!-- <img src="Gambar/logo.png" alt=""> -->
                <h1>JobBook</h1>
            </nav>
            <div class="project">
