@@ -370,3 +370,12 @@
 .font-color {
     color: rgb(236, 236, 236);
 }
+.profile-bg{
+    background: rgb(23, 85, 165);
+    height: 25%;
+}
+.profile-card{
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 10%;
+}

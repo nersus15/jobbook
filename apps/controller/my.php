@@ -28,4 +28,19 @@ class my extends controller
     function post_job()
     {
     }
+    function profile()
+    {
+        // persiapan
+        $data['page_title'] = "My Profile";
+        $data['extra']['css'] = [
+            '<link rel="stylesheet" href="' . BASEPATH . '/asset/css/style.css">'
+        ];
+        $data['extra']['js'] = [
+            '<script src="' . BASEPATH . 'asset/js/script.js"></script>',
+        ];
+        $this->view('head/main', $data);
+        $this->view('navigasi/main_navbar', $data);
+        $this->view('user/profil', $data);
+        $this->view('foot/main', $data);
+    }
 }
