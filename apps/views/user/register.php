@@ -43,6 +43,7 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group col-md-6"> <small onclick="show()" id="see" style="cursor: pointer">perlihatkan password</small></div>
                     <br>
                     <input type="hidden" name="role" value="1">
                     <button class="btn btn-warning w-100" type="submit">Daftar</button>
