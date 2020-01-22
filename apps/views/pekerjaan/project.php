@@ -37,14 +37,23 @@
                         <input type="text" class="form-control" name="tanggal">
                     </div>
                     <div class="form-group">
-                    <label for="">Pembuat</label>>
+                    <label for="">Pembuat</label>
                         <input type="text" class="form-control" name="pembuat">
                     </div>
                     <br>
+                    <div class="form-group">
+                        <div class="row">
+                        <div class="col">
                     <input type="hidden" name="role" value="1">
                     <button class="btn btn-primary w-50" type="submit">Simpan</button>
+
+                    </div>
+                    <div class="col">
                     <input type="hidden" name="role" value="1">
                     <button class="btn btn-danger w-50" type="submit">Batal</button>
+                    </div>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
