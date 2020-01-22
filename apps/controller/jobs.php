@@ -19,7 +19,7 @@ class jobs extends controller
         $this->view('head/main', $data);
         $this->view('navigasi/main_navbar');
         $this->view('navigasi/filter_sidebar');
-        $this->view('pekerjaaan/tpekerjaan', $data);
+        $this->view('pekerjaan/tpekerjaan', $data);
         $this->view('foot/main', $data);
     }
     function buat()
