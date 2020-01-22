@@ -255,7 +255,7 @@
     }
 
     /* jumbotron */
-    btn-warning
+
     .jumbotron .display-4 {
         font-family: Viga;
         font-size: 51px;
@@ -677,7 +677,7 @@ img{
 input[type=text]:focus {
     border: 2px solid #4b81e2;
   }
-  .info2{
+  .aha{
     width: 100%;
     font-size: 30px;
     color: black;
@@ -694,7 +694,7 @@ input[type=text]:focus {
     position: absolute;
     background-color: black;
 }
-.font7{
+.kokoh7{
     width: 25%;
     height: 0.3%;
     font-family: 'Times New Roman', Times, serif;
@@ -703,14 +703,14 @@ input[type=text]:focus {
     margin-top: 180%;
     position: absolute;
 }
-.input7{
+.mas7{
     width: 100%;
     font-size: 20px;
     position: absolute;
     margin-top: 180%;
     margin-left: 68%;
 }
-.font8{
+.kokoh8{
     width: 25%;
     height: 0.3%;
     font-family: 'Times New Roman', Times, serif;
@@ -719,14 +719,14 @@ input[type=text]:focus {
     margin-top: 200%;
     position: absolute;
 }
-.input8{
+.mas8{
     width: 100%;
     font-size: 20px;
     position: absolute;
     margin-top: 200%;
     margin-left: 68%;
 }
-.font9{
+.kokoh9{
     width: 48%;
     height: 0.3%;
     font-family: 'Times New Roman', Times, serif;
@@ -735,14 +735,14 @@ input[type=text]:focus {
     margin-top: 220%;
     position: absolute;
 }
-.input9{
+.mas9{
     width: 100%;
     font-size: 20px;
     position: absolute;
     margin-top: 220%;
     margin-left: 68%;
 }
-.font10{
+.kokoh10{
     width: 48%;
     height: 0.3%;
     font-family: 'Times New Roman', Times, serif;
@@ -751,14 +751,14 @@ input[type=text]:focus {
     margin-top: 240%;
     position: absolute;
 }
-.input10{
+.mas10{
     width: 100%;
     font-size: 20px;
     position: absolute;
     margin-top: 240%;
     margin-left: 68%;
 }
-.font11{
+.kokoh11{
     width: 60%;
     height: 0.3%;
     font-family: 'Times New Roman', Times, serif;
@@ -767,14 +767,14 @@ input[type=text]:focus {
     margin-top: 260%;
     position: absolute;
 }
-.input11{
+.mas11{
     width: 100%;
     font-size: 20px;
     position: absolute;
     margin-top: 260%;
     margin-left: 68%;
 }
-.font12{
+.kokoh12{
     width: 60%;
     height: 0.3%;
     font-family: 'Times New Roman', Times, serif;
@@ -783,14 +783,14 @@ input[type=text]:focus {
     margin-top: 280%;
     position: absolute;
 }
-.input12{
+.mas12{
     width: 100%;
     font-size: 20px;
     position: absolute;
     margin-top: 280%;
     margin-left: 68%;
 }
-.font13{
+.kokoh13{
     width: 80%;
     height: 0.3%;
     font-family: 'Times New Roman', Times, serif;
@@ -799,14 +799,14 @@ input[type=text]:focus {
     margin-top: 300%;
     position: absolute;
 }
-.input13{
+.mas13{
     width: 100%;
     font-size: 20px;
     position: absolute;
     margin-top: 300%;
     margin-left: 68%;
 }
-.hr4{
+.ea4{
     width: 425%;
     height: 10%;
     margin-left: -143.5%;
@@ -815,7 +815,7 @@ input[type=text]:focus {
     background-color: black;
 }
 
-.btn3{
+.uha{
     width: 40%;
     font-size: 20px;
     position: absolute;
@@ -826,7 +826,7 @@ input[type=text]:focus {
     border: none;
     border-radius: 10px;
 }
-.btn4{
+.ahu{
     width: 40%;
     font-size: 20px;
     position: absolute;
