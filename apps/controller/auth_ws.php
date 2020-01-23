@@ -43,6 +43,11 @@ class auth_ws extends controller
             flasher::setFlash('Gagal, Password tidak sama', 'danger');
             header('Location: ' . BASEURL . 'my/profile');
         }
+        if ($_FILES['image']['name'] == "") {
+            $data['photo'] = $data['oldPhoto'];
+        } else {
+            $data['photo'] = $this->helper('uploader')->uploadImage("/opt/lampp/htdocs/jobbook/public/asset/img/profile/", $data['oldPhoto'], BASEURL . "my/profile");
+        }
         // more logic
         # code ...
 
@@ -79,6 +84,7 @@ class auth_ws extends controller
             flasher::setFlash('Gagal, Password tidak sama', 'danger');
             header('Location: ' . BASEURL . 'user/register');
         }
+
         // more logic
         # code ...
 

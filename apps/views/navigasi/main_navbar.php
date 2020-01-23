@@ -1,7 +1,7 @@
   <!-- navbar -->
   <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container">
-          <a class="navbar-brand" href="#">Jobbook</a>
+          <a class="navbar-brand" href="<?= BASEURL ?>">Jobbook</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" style="background-color: white;">
               <span class="navbar-toggler-icon"></span>
           </button>
@@ -44,6 +44,8 @@
                                   <div class="dropdown-menu row" id="dropdownMenu" aria-labelledby="navbarDropdownMenuLink">
                                       <ul class="nav">
                                           <li><a class="nav-link nav-item" href="<?= BASEURL ?>my/profile">Profile</a></li>
+                                          <li><a class="nav-link nav-item" href="<?= BASEURL ?>my/profile">Kerjaan</a></li>
+                                          <li><a class="nav-link nav-item" href="<?= BASEURL ?>my/jobs">Pekerjaan Saya</a></li>
                                           <li><a class="nav-link nav-item" href="<?= BASEURL ?>auth_ws/logout">Logout</a></li>
                                       </ul>
                                   </div>

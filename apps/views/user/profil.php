@@ -8,6 +8,7 @@
             <form method="POST" action="<?= BASEURL ?>auth_ws/update" class="row" enctype="multipart/form-data">
                 <input type="hidden" name="oldemail" id="olde" value="<?= $data['akun']['email'] ?>">
                 <input type="hidden" name="oldno_hp" id="oldn" value="<?= $data['profile']['no_hp'] ?>">
+                <input type="hidden" name="oldPhoto" value="<?= $data['profile']['photo'] ?>">
                 <div class="col-md-12">
                     <div class="form-group col-md-6">
                         <label for="username">Username</label>

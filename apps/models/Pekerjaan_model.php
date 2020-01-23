@@ -60,7 +60,7 @@ class Pekerjaan_model
     function getPekerjaanByKode($kode)
     {
         $this->db->query("SELECT * FROM pekerjaan WHERE kode =:kode");
-        $this->db->bind('kode', $kode);
+        $this->db->bind('kode', $kode[0]);
         return $this->db->single();
     }
     // update pekerjaan 

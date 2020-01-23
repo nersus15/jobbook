@@ -22,8 +22,8 @@
 
                         </div>
                         <div class="action">
-                            <a href="<?= BASEURL ?>/jobs/detail/<?php $pekerjaan['kode'] ?>" class="btn btn-sm btn-outline-secondary">Lihat Detil</a>
-                            <a href="<?= BASEURL ?>/jobs/lamar/<?php $pekerjaan['kode'] ?>" class="btn btn-sm btn-success">Lamara Pekerjaan</a>
+                            <a href="<?= BASEURL ?>/jobs/detail/<?= $pekerjaan['kode'] ?>" class="btn btn-sm btn-outline-secondary">Lihat Detil</a>
+                            <a href="<?= BASEURL ?>/jobs/lamar/<?= $pekerjaan['kode'] ?>" class="btn btn-sm btn-success">Lamara Pekerjaan</a>
                         </div>
                     </div>
                 </div>

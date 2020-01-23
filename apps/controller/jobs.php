@@ -37,4 +37,19 @@ class jobs extends controller
         $this->view('pekerjaan/project', $data);
         $this->view('foot/main', $data);
     }
+    function detail($kode)
+    {
+        $data['extra']['css'] = [
+            '<link rel="stylesheet" href="' . BASEPATH . '/asset/css/style.css">'
+        ];
+        $data['extra']['js'] = [
+            '<script src="' . BASEPATH . 'asset/js/script.js"></script>',
+        ];
+        $data['page_title'] = "Detail Pekerjaan";
+        $data['pekerjaan'] = $this->model('Pekerjaan_model')->getPekerjaanByKode($kode);
+        $this->view('head/main', $data);
+        $this->view('navigasi/main_navbar', $data);
+        $this->view('pekerjaan/pdetail', $data);
+        $this->view('foot/main');
+    }
 }
